@@ -1,0 +1,55 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <label class="col-sm-1 control-label">Email:</label>
+    <div class="col-sm-3  inputGroupContainer">
+      <%= f.text_field :email,:class=>"form-control",:placeholder => "Email" %>
+    </div>
+  </div>
+
+  
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password:</label>
+    <div class="col-sm-3  inputGroupContainer">
+    <%= f.password_field :password,:class=>"form-control", autocomplete: "off",:placeholder => "Password" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+  </div><br>
+  
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="col-sm-3  inputGroupContainer">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+ <p>
+   <div class="col-sm-3  inputGroupContainer">
+    <%= f.submit 'Log in', class: "btn btn-info" %>
+  </p>
+<% end %>
+
+<%= render "devise/shared/links" %>
+<style type="text/css">
+body{
+  background-color: lightcyan;
+  background-image: url(/assets/19.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  .dropdown-menu li:hover{
+  visibility: visible;
+  }
+  .dropdown:hover .dropdown-menu{
+    display: block;
+  }
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background-color: #ffba98;
+  }
+ 
+</style>

@@ -1,0 +1,23 @@
+ 
+<header class="masthead" style="background-image: url('assets/home-bg.jpg')">
+  <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+          <%= form_for :user, url: users_path, :method => 'get' do |f| %>
+ <p>
+ <%=text_field_tag :name %>
+ <%= submit_tag "search" %>
+ </p>
+<% end %>
+          <h1>Friendship Model</h1>
+          <span class="subheading">A Model Theme by Mudit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+

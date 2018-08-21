@@ -1,0 +1,31 @@
+ <% if current_user_signed_in? %>
+ <div class="form-group">
+    <label class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-2  inputGroupContainer">
+      <%= f.text_field :name,:class=>"form-control",:placeholder => "First name" %>
+    </div>
+  </div>
+ 
+
+ <div class="form-group">
+    <label class="col-sm-1 control-label">Email:</label>
+    <div class="col-sm-3  inputGroupContainer">
+      <%= f.text_field :email,:class=>"form-control",:placeholder => "Email" %>
+    </div>
+  </div>
+
+ <div class="form-group">
+    <label class="col-sm-1 control-label">About:</label>
+    <div class="col-sm-3  inputGroupContainer">
+      <%= f.text_field :about,:class=>"form-control",:placeholder => "About" %>
+    </div>
+  </div><br><br><br>
+  
+
+  <div class="form-group">
+      <label class="col-sm-1 control-label">Image:</label>
+    <div class="col-sm-1  inputGroupContainer">
+     <%= f.file_field :image,:onchange => "showimagepreview(this)",:class=>"img_file"  %>
+     <img id="imgprvw" style="width: 167px; height: 94px; margin-top: 8px;" />
+    </div>
+  </div>

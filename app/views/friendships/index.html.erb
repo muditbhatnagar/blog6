@@ -1,0 +1,47 @@
+
+<html>
+<body><br><br>
+  <table border="2px" align="center" width="30%", style="background-color: pink">
+  <td>
+<center><h1>My Profile </h1></center>
+ <ul>
+<% if current_user.present? %>
+<hr> <strong>Name:</strong>
+    <%= current_user.name %><br><br>
+   <strong>Email:</strong>
+  <%= current_user.email %><br><br>
+     <strong>Image:</strong>
+     <%= image_tag current_user.image, style:"height: 70px; width: 100px;"%><br><br>
+    <strong>About:</strong>
+    <%= current_user.about %><br><br>
+   
+  <%end%>
+</ul>
+<%= link_to 'Edit my profile', edit_user_registration_path, class: "btn btn-success" %>
+</td>
+</table><br>
+<center><%= link_to 'Back', users_path, class: "btn btn-success btn-lg" %></center>
+
+</body>
+</html>
+
+ <style type="text/css">
+body{
+  background-color: lightcyan;
+  background-image: url(/assets/19.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  .dropdown-menu li:hover{
+  visibility: visible;
+  }
+  .dropdown:hover .dropdown-menu{
+    display: block;
+  }
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background-color: #ffba98;
+  }
+ 
+</style>

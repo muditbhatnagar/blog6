@@ -1,0 +1,40 @@
+<h2> My Profile <h2>
+  <tr>
+    <th>Name:</th><br>
+    <th>Email:</th><br>
+    <th>Image:</th><br>
+    <th>About:</th><br>      
+  </tr>
+ 
+  <% @profile.each do |profile|%>
+    <tr>
+    <% if current_user_signed_in? %>
+      <td><%= profile.name %></td><br>
+      <td><%= profile.email %></td><br>
+      <td><img src="<%= profile.image %>" style="height: 120px; width: 150px;"></td><br><br><br><br><br><br>
+      <td><%= profile.about %></td>
+     <td><%= link_to 'Edit', edit_profile_path(profile), class: "btn btn-primary" %></td>
+       <% end %>
+  <% end %>
+   <%= link_to 'Back', root_path, class: "btn btn-info" %>
+
+   <style type="text/css">
+body{
+  background-color: lightcyan;
+  background-image: url(/assets/19.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  .dropdown-menu li:hover{
+  visibility: visible;
+  }
+  .dropdown:hover .dropdown-menu{
+    display: block;
+  }
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background-color: #ffba98;
+  }
+ 
+</style>

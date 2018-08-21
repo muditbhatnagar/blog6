@@ -1,0 +1,38 @@
+class FriendsController < ApplicationController
+	 before_action :set_friend, only: :destroy
+	def new
+		@friend = Friend.new
+	end
+
+	def create
+		@friend = Friend.new(name: params[:friend][:name], image: params[:friend][:image], email: params[:friend][:email], about: params[:friend][:about])
+		@friend.save
+		redirect_to friends_path(@friend)
+	end
+
+	def show
+		@friend = Friend.find(params[:id])
+	end
+
+	def index
+    @friends = current_user.friends
+  end
+  
+ 
+
+	def myfrnd
+		user = current_user
+		@users = user.friends
+	end
+
+	def friendprofile
+		@friend = Friend.find(params[:id])
+	end
+
+	 private
+
+	def set_friend
+	  @friend = current_user.friends.find(params[:id])
+	end
+
+end

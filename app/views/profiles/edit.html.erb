@@ -1,0 +1,52 @@
+<h1>Editing Profile</h1>
+ 
+<%= form_for :profile, url: profile_path(@profile), method: :patch do |f| %>
+ 
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@profile.errors.count, "error") %> prohibited
+        this profile from being saved:
+      </h2>
+      <ul>
+        <% @profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+ <div class="form-group">
+    <label class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-2  inputGroupContainer">
+      <%= f.text_field :name,:class=>"form-control",:placeholder => "First name" %>
+    </div>
+  </div>
+ 
+
+ <div class="form-group">
+    <label class="col-sm-1 control-label">Email:</label>
+    <div class="col-sm-3  inputGroupContainer">
+      <%= f.text_field :email,:class=>"form-control",:placeholder => "Email" %>
+    </div>
+  </div>
+
+ <div class="form-group">
+    <label class="col-sm-1 control-label">About:</label>
+    <div class="col-sm-3  inputGroupContainer">
+      <%= f.text_field :about,:class=>"form-control",:placeholder => "About" %>
+    </div>
+  </div><br><br><br>
+  
+
+  <div class="form-group">
+      <label class="col-sm-1 control-label">Image:</label>
+    <div class="col-sm-1  inputGroupContainer">
+     <%= f.file_field :image,:onchange => "showimagepreview(this)",:class=>"img_file"  %>
+     <img id="imgprvw" style="width: 167px; height: 94px; margin-top: 8px;" />
+    </div>
+  </div>
+
+  <p>
+    <%= f.submit 'save', class: "btn btn-info" %>
+  </p>

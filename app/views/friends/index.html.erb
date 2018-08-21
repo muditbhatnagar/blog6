@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+ <html>
+ <body>
+ <center><h1>My Friend </h1></center>
+<table class="table">
+ <ul>
+  <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Profile Image</th>
+      <th>About</th>
+    </tr>
+<% @friend.each do |friend| %>
+  <tr>
+    <td><%= friend.name %> </td>
+    <td><%= friend.email %></td>
+    <td><%= image_tag friend.image_url.to_s, style:"height: 70px; width: 100px;" %></td>
+    <td><%= friend.about %></td>
+     
+    <td> <%= link_to 'Show profile',friendships_friendprofile_friend_path(friend), class: "btn btn-success "%> </td> 
+    <td>
+      <% if friend.friendships.present?%>
+        <% friend.friendships.each do |friend| %>
+          <%= link_to "Unfriend", friendship_path(id: friend.id), method: :delete, class: "btn btn-danger" %>
+        <%end%>   
+      <%elsif current_friend.friendships.present? %>
+        <% current_friend.friendships.each do |friend| %>
+          <%= link_to "Unfriend", friendship_path(id: friend.id), method: :delete, class: "btn btn-danger" %>
+        <%end%> 
+      <%else%>
+      <%end%>
+    </td> 
+   
+  </tr>
+ <%end%> 
+</ul>
+
+</table>
+<center><%= link_to 'Back', users_path, class: "btn btn-success btn-lg" %></center>
+
+</body>
+ </html>
+
+<style type="text/css">
+body{
+  background-color: lightcyan;
+  background-image: url(/assets/19.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  .dropdown-menu li:hover{
+  visibility: visible;
+  }
+  .dropdown:hover .dropdown-menu{
+    display: block;
+  }
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background-color: #ffba98;
+  }
+ 
+</style>
