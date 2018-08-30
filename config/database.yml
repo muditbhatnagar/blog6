@@ -10,9 +10,9 @@ default: &default
    reconnect: false
   pool: 5
   secure_auth: false
-  database: test_runner
-  username: root
-  password: root
+  database: testing
+  username: root1
+  password: root1
   host: localhost
 
 development:
