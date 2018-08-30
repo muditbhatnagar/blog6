@@ -1,78 +1,50 @@
 <h1>All Users</h1>
 
-<td><%= link_to 'My Profile', friendships_path, class: "btn btn-primary"  %> </td>
+<td><%= link_to 'My Profile', friendships_path, class: "btn btn-primary"  %> </td><br><br>
 
  <%= form_for :user, url: users_path, :method => 'get' do |f| %>
-
- <p>
-  <%= text_field_tag :name %>
-      <%= submit_tag 'Search' , class: "btn btn-primary" %>
- </p>
-<% end %>
+  <p>
+   <%= text_field_tag :name %>
+   <%= submit_tag 'Search' , class: "btn btn-primary" %>
+  </p>
+ <% end %>
 
 <table>
   <tr>
     <th>Name</th>
+     <th colspan="1"></th>      
     <th>Email</th>
+    <th colspan="2"></th>
     <th>Image</th>
-    <th>About</th>      
+    <th colspan="3"></th>
+    <th>About</th>
   </tr>
- 
-  <% @user.each do |user|%>
+
+  <% @user.where.not(id: current_user.id).each do |user| %>
     <tr>
       <td><%= user.name %></td>
+      <th colspan="2"></th>
       <td><%= user.email %></td>
+      <th colspan="2"></th>
       <td><img src="<%= user.image %>" style="height: 120px; width: 150px;"></td>
+      <th colspan="3"></th>
       <td><%= user.about %></td>
       <td>
-        <p align="center">
-         <%if Friendship.where(user_id: [current_user.id, user.id],friend_id: [current_user.id, user.id],accepted: false).present?%>
-           <button type="button" class="btn btn-danger">Request sent</button>
-          <%elsif Friendship.where(user_id: [current_user.id, user.id],friend_id: [current_user.id, user.id],accepted: true).present?
-              %>
-            <button type="button" class="btn btn-primary">Friend</button>
-          <%else %> 
-           <%= link_to "Add Friend", friendships_path(friend_id: user), method: :post, class:"btn btn-success"%>
-          <% end %>
-          </p>
-      </td> 
+       <p align="right">
+      <%if Friendship.where(user_id: [current_user.id, user.id],friend_id: [current_user.id, user.id],accepte: false).present?%>
+         <button type="button" class="btn btn-danger">Request sent</button>
+        <%elsif Friendship.where(user_id: [current_user.id, user.id],friend_id: [current_user.id, user.id],accepte: true).present? %>
+         <button type="button" class="btn btn-primary">Friend</button>
+        <%else %> 
+         <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: :post, class: "btn btn-success"%>
+        <%if current_user && current_user.try(:admin?)%>
+         <%= link_to "Delete", user_path(id: user.id), method: :delete, class: "btn btn-danger"%>
+        <% end %> 
+      <%end%>
+      </p>
+      </td>
     </tr>
   <% end %>
-</table>
+  <%= link_to 'Back', root_path, class: "btn btn-success btn-lg" %>
 
-
-
-<table border="2px" align="center">
-  <ul>
-    <% current_user.pending_friends.each do |f_request| %>
-      <li>
-       <%= f_request.user.email %>
-       <%= link_to "Accept",  friendship_path(id: f_request.id), method: "put", class:"btn btn-success"%>
-       <%= link_to "Decline", friendship_path(id: f_request.id), method: :delete, class:"btn btn-danger" %>
-      </li>
-    <% end %>
-  </ul> 
-</table>
-<br>
-
-<%= link_to 'Back', root_path, class: "btn btn-info" %>
-
-<style type="text/css">
-  body{
-    background-color: lightcyan;
-    background-image: url(/assets/19.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    }
-    .dropdown-menu li:hover{
-    visibility: visible;
-    }
-    .dropdown:hover .dropdown-menu{
-      display: block;
-    }
-    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
-      background-color: #ffba98;
-    }
-</style>
+  <%= render partial: "users/background"%>

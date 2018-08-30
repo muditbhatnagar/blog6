@@ -11,28 +11,24 @@ class FriendsController < ApplicationController
 	end
 
 	def show
-		@friend = Friend.find(params[:id])
+		@friendship = User.find(params[:id])
 	end
 
 	def index
-    @friends = current_user.friends
-  end
-  
- 
+		@friend = current_user.friends
+	end
 
-	def myfrnd
+	def friend
 		user = current_user
 		@users = user.friends
 	end
 
 	def friendprofile
-		@friend = Friend.find(params[:id])
+		@friendship = User.find(params[:id])
 	end
 
-	 private
-
+  private
 	def set_friend
 	  @friend = current_user.friends.find(params[:id])
 	end
-
 end

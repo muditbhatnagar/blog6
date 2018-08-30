@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180818121201) do
+ActiveRecord::Schema.define(version: 20180824054905) do
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friend_requests_on_friend_id"
+    t.index ["user_id"], name: "index_friend_requests_on_user_id"
+  end
 
   create_table "friends", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,9 +33,10 @@ ActiveRecord::Schema.define(version: 20180818121201) do
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.boolean  "accepted"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "accepte",    default: false
   end
 
   create_table "profiles", force: :cascade do |t|

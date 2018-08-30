@@ -1,0 +1,26 @@
+<html>
+<body><br><br>
+	<table border="2px" align="center" width="30%", style="background-color: pink">
+	<td>
+<center><h1>Friend Profile </h1></center>
+ <ul>
+<hr> <strong>Name:</strong>
+ <%= @friendship.name %><br><br>
+  <strong>Email:</strong>
+ <%= @friendship.email %><br><br>
+  <strong>Image</strong>
+ <a href="friendimage"><%= image_tag @friendship.image_url.to_s, style:"height: 70px; width: 100px;" %></a><br><br>
+  <strong>About:</strong>
+ <%= @friendship.about %><br><br>
+ </hr>
+</ul> 
+</td>
+</table><br>
+</body>
+</html>
+
+<center><%= link_to 'Back', :back, class: "btn btn-success btn-lg" %></center>
+
+
+
+<%= render partial: "users/background"%>

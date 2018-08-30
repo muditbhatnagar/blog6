@@ -1,21 +1,23 @@
-<h2> Pending Requests: <h2>
+<h2 style="color:bold"> Pending Requests: <h2>
 
-  <br><br>
+<br><br>
 <table border="2px" align="center">
-
+  <td>
+   <h2 style="color:black">*Here is a list of your pending requests*</h2>
 	 <ul>
-	    <% current_user.pending_friends.each do |f_request| %>
+	   <% current_user.pending_friends.each do |f_request| %>
 	    <li>
-
-	      <%= f_request.user.email %>
-
-	      <%= link_to "Accept",  friendship_path(id: f_request.id), method: "put", class:"btn btn-success"%>
-
-	      <%= link_to "Decline", friendship_path(id: f_request.id), method: :delete, class:"btn btn-danger" %>
 	      
+	      <%= link_to "Accept",  friendship_path(id: f_request.id), method: "put", class:"btn btn-success"%>
+	      <%= link_to "Decline", friendship_path(id: f_request.id), method: :delete, class:"btn btn-danger" %>
 	    </li>
-	  <% end %>
-	</ul>  
-	
+	   <% end %>
+	 </ul>  
+	</td>
 </table><br>
-<center><%= link_to 'Back', root_path, class: "btn btn-success btn-lg" %></center>
+<center><%= link_to 'Back', :back, class: "btn btn-info btn-lg" %></center><br><br><br>
+
+
+
+
+ <%= render partial: "users/background"%>

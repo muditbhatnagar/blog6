@@ -15,9 +15,9 @@ class UsersController < ApplicationController
 
 	def index
 		if params[:name].present?
-	    @user = User.where("name like ?", "%#{params[:name]}%")
+	   @user = User.where("name like ?", "%#{params[:name]}%")
 	  else
-	    @user = User.all
+	   @user = User.all
 	  end
 	end
 
@@ -27,5 +27,14 @@ class UsersController < ApplicationController
 		redirect_to users_path
 	end
 
-	
+	def destroy
+	  current_user.remove_friend(@friend)
+	  head :no_content
+  end
+
+	def myfrnd
+		user = current_user
+		@users = user.friends
+	end
+		
 end
