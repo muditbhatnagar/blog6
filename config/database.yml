@@ -6,11 +6,12 @@
 #
 default: &default
   adapter: postgresql
+  
   encoding: utf8
-   reconnect: false
+  reconnect: false
   pool: 5
   secure_auth: false
-  database: testing
+  database: development
   username: root1
   password: root1
   host: localhost
