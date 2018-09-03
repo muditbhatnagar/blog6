@@ -44,9 +44,9 @@ class FriendRequestsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find_by(id: params[:id])
-    @friendship.destroy(accepte: false)
+   @friendship.destroy
     flash[:notice] = "Removed friendship."
-    redirect_to friend_request_path
+    redirect_to root_path
   end
 
 	def pending
