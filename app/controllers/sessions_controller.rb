@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate_user!
-  def failure
-  end
+  
 
   def create
     user = Authentication.from_omniauth(request.env["omniauth.auth"])
