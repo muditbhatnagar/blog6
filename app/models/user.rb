@@ -6,8 +6,9 @@ class User < ApplicationRecord
    class_name: 'FriendRequest',
    source: :friend
 
-
-
+	# before_create :confirmation_token
+  has_many :authentications, dependent: :destroy
+	
 
 	has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, dependent: :destroy

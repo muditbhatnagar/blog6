@@ -9,4 +9,6 @@ class ApplicationController < ActionController::Base
 			user_params.permit({ roles: [] }, :email, :password, :password_confirmation, :image, :about, :name)
 		end
 	end
+
+	
 end

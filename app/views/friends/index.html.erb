@@ -23,8 +23,6 @@
         <% friend.friendships.each do |friend| %>
           <%= link_to "Unfriend", friendship_path(id: friend.id), method: :delete, class: "btn btn-danger" %>
         <%end%>   
-      
-      <%else%>
       <%end%>
     </td> 
   </tr>

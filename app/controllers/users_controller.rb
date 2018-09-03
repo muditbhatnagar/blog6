@@ -36,5 +36,9 @@ class UsersController < ApplicationController
 		user = current_user
 		@users = user.friends
 	end
-		
+
+	 def omniauth_failure
+    redirect_to init_sign_in_users_path
+    #redirect wherever you want.
+  end
 end

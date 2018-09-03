@@ -55,3 +55,11 @@ gem 'devise'
 gem 'carrierwave'
 gem 'has_friendship'
 gem 'popular'
+gem 'omniauth-facebook'
+gem "oauth"
+gem "oauth2"
+gem 'omniauth-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin'
+gem 'omniauth-google'

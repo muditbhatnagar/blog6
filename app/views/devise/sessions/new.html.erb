@@ -1,9 +1,11 @@
-<h2>Log in</h2>
+<center><h2>Log in</h2></center>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<table border="2px" align="center" width="30%", style="background-color: pink ">
+<td><br>
   <div class="form-group">
     <label class="col-sm-1 control-label">Email:</label>
-    <div class="col-sm-3  inputGroupContainer">
+    <div class="col-sm-8  inputGroupContainer">
       <%= f.text_field :email,:class=>"form-control",:placeholder => "Email" %>
     </div>
   </div>
@@ -11,7 +13,7 @@
   
   <div class="form-group">
     <label class="col-sm-2 control-label">Password:</label>
-    <div class="col-sm-3  inputGroupContainer">
+    <div class="col-sm-8  inputGroupContainer">
     <%= f.password_field :password,:class=>"form-control", autocomplete: "off",:placeholder => "Password" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -20,17 +22,64 @@
   
 
   <% if devise_mapping.rememberable? -%>
-    <div class="col-sm-3  inputGroupContainer">
+    <div class="col-sm-5  inputGroupContainer">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end -%>
+  <% end %>
 
- <p>
+
+  <p><center>
    <div class="col-sm-3  inputGroupContainer">
     <%= f.submit 'Log in', class: "btn btn-info" %>
-  </p>
+  </p></center><br>
+
+ <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">
+            <a href="/auth/google_oauth2">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-google fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="/auth/facebook">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="/auth/twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="/auth/linkedin">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+         <p class="copyright text-muted"></p>
+      </div>
+    </div>
+  </div>
+
+
 <% end %>
+</td>
+</table>
 
 <%= render "devise/shared/links" %>
 <style type="text/css">

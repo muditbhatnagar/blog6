@@ -1,34 +1,25 @@
 
- 
 <!DOCTYPE html>
 <html>
   <head>
     <title>Blog5</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+   <%= yield %>
   </body>
 </html>
 
-<% if user_signed_in? %>
 
-    Signed in as <%= current_user.email %>.
-  Not you?
-
-    <%= link_to "Sign out",
-  destroy_user_session_path, :method => :delete, class: "btn btn-primary" %>
-
-  <% else %>
-
-    <%= link_to "Sign up",
-  new_user_registration_path %> or <%= link_to "sign in",
-  new_user_session_path, class: "btn btn-primary" %>
-
-  <% end %>
-
-
+<center><% if user_signed_in? %>
+ Signed in as <%= current_user.email %>.<br>
+Not you?<br>
+  <%= link_to "Sign out",
+    destroy_user_session_path, :method => :delete, class: "btn btn-primary" %>
+ <% else %>
+  <%= link_to "Sign up",
+   new_user_registration_path, class: "btn btn-primary btn-sm" %> or <%= link_to "sign in",
+   new_user_session_path, class: "btn btn-primary btn-sm" %></center>
+<% end %>
