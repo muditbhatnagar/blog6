@@ -11,7 +11,7 @@ default: &default
   username: root
   password: root
   host: localhost
-  database: test_runner23
+  database: test_runner231
 
 development:
   <<: *default

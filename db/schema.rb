@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20180904075734) do
     t.integer  "receiver_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["author_id"], name: "index_conversations_on_author_id", unique: true, using: :btree
-    t.index ["receiver_id"], name: "index_conversations_on_receiver_id", unique: true, using: :btree
+    t.index ["author_id"], name: "index_conversations_on_author_id", using: :btree
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id", using: :btree
   end
 
   create_table "friend_requests", force: :cascade do |t|
