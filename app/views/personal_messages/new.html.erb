@@ -2,9 +2,11 @@
 
 <%= form_for @personal_message do |f| %>
   <%= hidden_field_tag 'receiver_id', @receiver.id %>
-
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-
-  <%= f.submit %>
+<div class="form-group">
+      <label class="col-sm-2 control-label">Body:</label>
+      <div class="col-sm-3  inputGroupContainer">
+     <%= f.text_field :body,:class=>"form-control",:placeholder => "Comment"  %>
+     <%= f.submit %>
+    </div>
 <% end %>
+ <%= render partial: "users/background"%>

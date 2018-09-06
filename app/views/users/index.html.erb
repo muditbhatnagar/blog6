@@ -1,8 +1,5 @@
 <h1>All Users</h1>
 
-
-<ul><%= render partial: "users/user" %></ul>
-
 <td><%= link_to 'My Profile', friendships_path, class: "btn btn-primary"  %> </td><br><br>
 
  <%= form_for :user, url: users_path, :method => 'get' do |f| %>
@@ -23,9 +20,11 @@
     <th>About</th>
   </tr>
 
+
   <% @user.where.not(id: current_user.id).each do |user| %>
     <tr>
-      <td><%= user.name %></td>
+     <td> <%= user.name %> <br> 
+     |<%= link_to 'send a message', new_personal_message_path(receiver_id: user) %></td>
       <th colspan="2"></th>
       <td><%= user.email %></td>
       <th colspan="2"></th>
