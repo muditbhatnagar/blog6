@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+
 	mount_uploader :image, AvatarUploader
 	has_friendship
   has_many :incoming_friend_requests,
@@ -7,6 +8,21 @@ class User < ApplicationRecord
    source: :friend
 
 	# before_create :confirmation_token
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
+
+  has_many :personal_messages, dependent: :destroy
+
+  def name
+    email.split('@')[0]
+  end
+
   has_many :authentications, dependent: :destroy
 	
 

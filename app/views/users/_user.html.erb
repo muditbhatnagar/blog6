@@ -1,0 +1,5 @@
+  <% @user.where.not(id: current_user.id).each do |user| %>
+<li>
+  <h1 style="color:red;"> <%= user.name %> </h1>| <%= link_to 'send a message', new_personal_message_path(receiver_id: user) %>
+</li>
+<% end %>

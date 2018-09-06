@@ -1,0 +1,17 @@
+<table>
+	<td>
+	 <center><h1 style="color:black;">Chatting with <%= @conversation.with(current_user).try( :name) %></h1>
+	  <div id="conversation-main">
+	   <div id="conversation-body">
+	    <%= render @conversation.personal_messages %>
+	   </div>
+	    <%= form_for @personal_message do |f| %>
+	    <%= hidden_field_tag 'conversation_id', @conversation.id %>
+	    <%= f.label :body %>
+	    <%= f.text_area :body %>
+	    <%= f.submit %>
+	   <% end %>
+	  </div>
+	 </center>
+	</td>
+</table>

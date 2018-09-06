@@ -15,9 +15,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def index
-		
 		@profile = Profile.all
-		
 	end
 
 	def edit

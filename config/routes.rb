@@ -9,13 +9,16 @@ Rails.application.routes.draw do
   devise_for :user
 
 	root 'homes#index'
-
+	root 'conversations#index'
+	resources :conversations, only: [:index, :show]
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	resources :friendships
-	resources :users
+	resources :users, only: [:index]
 	resources :profiles
 	resources :friends
 	resources :requests
+	resources :personal_messages
+
 	get 'homes/index'
 	#get '/auth/:provider/callback', :to => 'sessions#facebook',  via: [:get, :post]
 	match 'auth/:provider/callback', to: 'sessions#create',  via: [:get, :post]
